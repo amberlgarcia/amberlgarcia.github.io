@@ -151,7 +151,23 @@
       transition: border-color 0.2s, color 0.2s;
     }
 
-    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-gold {
+      padding: 0.85rem 2rem;
+      background: #C9A84C;
+      color: white;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .btn-gold:hover { background: #B8963E; transform: translateY(-1px); }
 
     .hero-image {
       animation: fadeUp 0.9s 0.2s ease both;
@@ -165,7 +181,7 @@
       left: -1.5rem;
       right: 1.5rem;
       bottom: 1.5rem;
-      border: 2px solid var(--gold-light);
+      border: 2px solid #C9A84C;
       z-index: 0;
     }
 
@@ -492,21 +508,22 @@
     }
 
     .gsom-callout {
-      background: rgba(201, 168, 76, 0.18);
-      border: 1px solid rgba(201, 168, 76, 0.5);
+      background: #C2737A;
+      border: 1px solid #B06068;
       padding: 2rem;
     }
 
     .gsom-callout h4 {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.2rem;
-      color: #E8D5A3;
+      color: #FFFFFF;
       margin-bottom: 0.75rem;
+      text-align: center;
     }
 
     .gsom-callout p {
       font-size: 0.9rem;
-      color: #C9B98A;
+      color: #E8D8DA;
       line-height: 1.7;
       margin-bottom: 1.5rem;
     }
@@ -750,7 +767,7 @@
           <p>When people understand how they're naturally wired to contribute, work becomes clearer, more energizing, and more impactful.</p>
           <p>Using Patrick Lencioni's The 6 Types of Working Genius framework, I help teams strengthen collaboration and communication while helping individuals better recognize where they thrive, how they create value, and what environments bring out their best work.</p>
           <p style="margin-bottom: 1.5rem;">Perfect for leadership teams, organizational change, career clarity, and role alignment.</p>
-          <a href="https://calendly.com/amberljgarcia/30min" target="_blank" class="btn-primary">Book a Discovery Call</a>
+          <a href="https://calendly.com/amberljgarcia/30min" target="_blank" class="btn-gold">Book a Discovery Call</a>
         </div>
       </div>
     </div>
