@@ -1,9 +1,765 @@
-html<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Amber L Garcia</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amber L Garcia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8D5A3;
+      --gold-pale: #F7F0E0;
+      --cream: #FDFAF4;
+      --warm-white: #FFFEF9;
+      --charcoal: #2C2C2C;
+      --mid: #6B6560;
+      --light-line: #E8E0D0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(253, 250, 244, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--light-line);
+    }
+
+    .nav-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--charcoal);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 3rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 4rem;
+    }
+
+    .hero-text { animation: fadeUp 0.9s ease both; }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      line-height: 1.2;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--mid);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 0.85rem 2rem;
+      background: var(--gold);
+      color: white;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: #b8963e; transform: translateY(-1px); }
+
+    .btn-outline {
+      padding: 0.85rem 2rem;
+      background: transparent;
+      color: var(--charcoal);
+      border: 1.5px solid var(--light-line);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-image {
+      animation: fadeUp 0.9s 0.2s ease both;
+      position: relative;
+    }
+
+    .hero-image::before {
+      content: '';
+      position: absolute;
+      top: -1.5rem;
+      left: -1.5rem;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      border: 2px solid var(--gold-light);
+      z-index: 0;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      position: relative;
+      z-index: 1;
+      filter: saturate(0.95);
+    }
+
+    /* FOCUS AREAS STRIP */
+    .focus-strip {
+      background: var(--charcoal);
+      padding: 1.5rem 3rem;
+      overflow: hidden;
+    }
+
+    .focus-strip-inner {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .focus-tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      white-space: nowrap;
+    }
+
+    .focus-dot {
+      width: 4px;
+      height: 4px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 3rem;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.25;
+      margin-bottom: 2rem;
+      color: var(--charcoal);
+    }
+
+    .section-divider {
+      width: 3rem;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--mid);
+      margin-bottom: 1.25rem;
+    }
+
+    .about-text p strong {
+      color: var(--charcoal);
+      font-weight: 500;
+    }
+
+    .about-credentials {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .credential-item {
+      padding: 1.5rem;
+      border: 1px solid var(--light-line);
+      background: var(--warm-white);
+    }
+
+    .credential-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .credential-value {
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      line-height: 1.5;
+    }
+
+    /* WORK / PILLARS */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .pillar-card {
+      padding: 2rem;
+      background: var(--warm-white);
+      border: 1px solid var(--light-line);
+      border-top: 3px solid var(--gold);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+    }
+
+    .pillar-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--gold-light);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .pillar-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--charcoal);
+      margin-bottom: 0.75rem;
+    }
+
+    .pillar-desc {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--mid);
+    }
+
+    /* CAREER */
+    .career-timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .career-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      bottom: 0;
+      width: 1px;
+      background: var(--light-line);
+    }
+
+    .career-item {
+      position: relative;
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+
+    .career-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .career-item::before {
+      content: '';
+      position: absolute;
+      left: -2.35rem;
+      top: 0.5rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--cream);
+    }
+
+    .career-period {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.35rem;
+    }
+
+    .career-role {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
+    }
+
+    .career-company {
+      font-size: 0.85rem;
+      color: var(--mid);
+      margin-bottom: 0.75rem;
+    }
+
+    .career-desc {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--mid);
+    }
+
+    /* RESUME CTA */
+    .resume-cta {
+      background: var(--gold-pale);
+      border: 1px solid var(--gold-light);
+      padding: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 4rem;
+    }
+
+    .resume-cta-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .resume-cta-text p {
+      font-size: 0.9rem;
+      color: var(--mid);
+    }
+
+    /* CONTACT */
+    .contact-section {
+      background: var(--charcoal);
+      color: var(--cream);
+    }
+
+    .contact-section .section-title { color: var(--cream); }
+
+    .contact-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 3rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-text p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: #B8B0A4;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--gold-light);
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .contact-link:hover { color: var(--gold); }
+
+    .contact-link-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 1px solid #444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .gsom-callout {
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      padding: 2rem;
+    }
+
+    .gsom-callout h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--gold-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .gsom-callout p {
+      font-size: 0.9rem;
+      color: #B8B0A4;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #1E1E1E;
+      padding: 1.5rem 3rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #666;
+      letter-spacing: 0.05em;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 2.5rem; }
+      .hero-image { order: -1; }
+      .hero-image img { max-width: 100%; aspect-ratio: 1/1; }
+      .hero-image::before { display: none; }
+      section { padding: 4rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-inner { padding: 4rem 1.5rem; }
+      .resume-cta { flex-direction: column; }
+      .focus-strip { padding: 1.25rem 1.5rem; }
+    }
+  </style>
 </head>
 <body>
-<h1>Coming soon</h1>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-name">Amber L Garcia</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#career">Career</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Senior Director · Transformation & Portfolio</p>
+      <h1 class="hero-headline">I do my best work in organizations that are <em>becoming.</em></h1>
+      <p class="hero-sub">I bring clarity to complex environments, align leaders around what matters most, and create momentum across teams navigating complexity, growth, and change.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Get in Touch</a>
+        <a href="#career" class="btn-outline">View My Work</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="headshot_2023_dec.jpg" alt="Amber L Garcia" />
+    </div>
+  </div>
+
+  <!-- FOCUS STRIP -->
+  <div class="focus-strip">
+    <div class="focus-strip-inner">
+      <span class="focus-tag">Enterprise Transformation</span>
+      <span class="focus-dot"></span>
+      <span class="focus-tag">Strategic Portfolio & Operations</span>
+      <span class="focus-dot"></span>
+      <span class="focus-tag">Operating Model Evolution</span>
+      <span class="focus-dot"></span>
+      <span class="focus-tag">Change Leadership</span>
+      <span class="focus-dot"></span>
+      <span class="focus-tag">Executive Alignment</span>
+      <span class="focus-dot"></span>
+      <span class="focus-tag">Systems Thinking</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="fade-in">
+      <p class="section-label">About</p>
+      <h2 class="section-title">Operating at the intersection of people, strategy & execution</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <p>I'm a Senior Director with a decade-long track record at Experian, where I've led enterprise transformation, built operating systems from scratch, and helped organizations evolve into more adaptive, outcome-focused ways of working.</p>
+        <p>I amplify what's already working, orchestrate across functions, and help organizations move with <strong>greater focus, adaptability, and confidence</strong> — especially during periods of rapid change, AI-driven disruption, and operating model evolution.</p>
+        <p>My work lives at the intersection of portfolio strategy, delivery orchestration, change leadership, and governance design. I don't just build frameworks — I build the conditions for organizations to actually use them.</p>
+      </div>
+      <div class="about-credentials fade-in">
+        <div class="credential-item">
+          <p class="credential-label">Current Role</p>
+          <p class="credential-value">Senior Director, Head of Portfolio Delivery & Strategic Transformation · Experian</p>
+        </div>
+        <div class="credential-item">
+          <p class="credential-label">Education</p>
+          <p class="credential-value">MBA · UCLA Anderson School of Management<br/>BS Organizational Leadership · Biola University</p>
+        </div>
+        <div class="credential-item">
+          <p class="credential-label">Certifications</p>
+          <p class="credential-value">PMP · Project Management Institute<br/>PROSCI Change Management<br/>Working Genius Facilitator · Patrick Lencioni</p>
+        </div>
+        <div class="credential-item">
+          <p class="credential-label">Location</p>
+          <p class="credential-value">Orange County, CA</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK / PILLARS -->
+  <section id="work" style="background: var(--warm-white); max-width: 100%; padding: 6rem 0;">
+    <div style="max-width: 1100px; margin: 0 auto; padding: 0 3rem;">
+      <div class="fade-in">
+        <p class="section-label">What I Do</p>
+        <h2 class="section-title">Four interconnected systems.<br/>One accountable leader.</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar-card fade-in">
+          <p class="pillar-number">01</p>
+          <h3 class="pillar-title">Portfolio Management & Measurement</h3>
+          <p class="pillar-desc">End-to-end portfolio systems, planning, staffing alignment, and execution visibility — with measurement frameworks that connect delivery activity to strategic outcomes and business value.</p>
+        </div>
+        <div class="pillar-card fade-in">
+          <p class="pillar-number">02</p>
+          <h3 class="pillar-title">Delivery Orchestration</h3>
+          <p class="pillar-desc">Cross-functional coordination across large, matrixed organizations — reducing friction, clarifying ownership, and driving consistent execution momentum at scale across dozens of teams.</p>
+        </div>
+        <div class="pillar-card fade-in">
+          <p class="pillar-number">03</p>
+          <h3 class="pillar-title">Operating Model Evolution & Change Leadership</h3>
+          <p class="pillar-desc">Driving transformation toward product and outcome-oriented ways of working through Agile, Team Topologies, and OKR practices — including AI-augmented workflow adoption and organizational readiness.</p>
+        </div>
+        <div class="pillar-card fade-in">
+          <p class="pillar-number">04</p>
+          <h3 class="pillar-title">Governance & Structure</h3>
+          <p class="pillar-desc">Designing the forums, operating rhythms, decision rights, and leadership reporting structures that enable high-velocity delivery across complex, interdependent delivery systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAREER -->
+  <section id="career">
+    <div class="fade-in">
+      <p class="section-label">Career</p>
+      <h2 class="section-title">A decade of building, scaling & transforming</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="career-timeline">
+      <div class="career-item">
+        <p class="career-period">June 2025 – Present</p>
+        <h3 class="career-role">Senior Director, Head of Portfolio Delivery & Strategic Transformation</h3>
+        <p class="career-company">Experian Consumer Services, North America · Costa Mesa, CA</p>
+        <p class="career-desc">Leading enterprise-wide portfolio management, delivery orchestration, operating model evolution, and governance design across a 1,500-person org with an eight-figure initiative portfolio spanning 5 product domains and 45–65 cross-functional teams.</p>
+      </div>
+      <div class="career-item">
+        <p class="career-period">April 2023 – June 2025</p>
+        <h3 class="career-role">Senior Director, Strategic Transformation</h3>
+        <p class="career-company">Experian Consumer Services, North America · Costa Mesa, CA</p>
+        <p class="career-desc">Brought in to reset and rebuild how the organization planned, prioritized, and delivered. Redesigned quarterly planning, drove executive alignment to a single prioritized initiative list, and introduced the SVPG Product Operating Model and Team Topologies frameworks.</p>
+      </div>
+      <div class="career-item">
+        <p class="career-period">2018 – 2023</p>
+        <h3 class="career-role">Director → Senior Director, Marketplace Operations</h3>
+        <p class="career-company">Experian Consumer Services, North America · Costa Mesa, CA</p>
+        <p class="career-desc">Part of the founding operating team that scaled Experian Marketplace from proof of concept to an eight-figure, multi-vertical growth business — now the growth engine of the D2C division spanning credit cards, personal loans, and insurance.</p>
+      </div>
+      <div class="career-item">
+        <p class="career-period">2015 – 2018</p>
+        <h3 class="career-role">Senior Agile Project Manager / Program Manager</h3>
+        <p class="career-company">Experian Consumer Services, North America · Costa Mesa, CA</p>
+        <p class="career-desc">Core delivery lead on Experian Boost — recognized as North America Product Launch of the Year — and orchestrated cross-functional delivery for Experian CreditWorks, reaching 1M+ installs.</p>
+      </div>
+      <div class="career-item">
+        <p class="career-period">2012 – 2015</p>
+        <h3 class="career-role">Business Operations & Program Management</h3>
+        <p class="career-company">Football.com / Three Point Productions · Mission Viejo, CA</p>
+        <p class="career-desc">Early-stage operating and program management experience at a privately funded sports startup.</p>
+      </div>
+      <div class="career-item">
+        <p class="career-period">2005 – 2012</p>
+        <h3 class="career-role">Legal Coordinator → Agile Project Manager</h3>
+        <p class="career-company">First American / CoreLogic · Santa Ana, CA</p>
+        <p class="career-desc">Seven-year arc from legal coordinator to Agile project manager in real estate data and analytics.</p>
+      </div>
+    </div>
+
+    <div class="resume-cta fade-in">
+      <div class="resume-cta-text">
+        <h3>Want the full picture?</h3>
+        <p>Download my resume for the complete career story, scope details, and key accomplishments.</p>
+      </div>
+      <a href="Amber_L_Garcia_Resume_2026.pdf" class="btn-primary" download>Download Resume</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <div class="contact-section">
+    <div class="contact-inner" id="contact">
+      <div class="contact-grid">
+        <div class="contact-text">
+          <p class="section-label" style="color: var(--gold);">Contact</p>
+          <h2 class="section-title">Let's talk about what's next.</h2>
+          <div class="section-divider"></div>
+          <p>I'm open to senior leadership conversations around transformation, portfolio strategy, and operating model evolution — as well as Working Genius facilitation through Golden State of Mind.</p>
+          <div class="contact-links">
+            <a href="mailto:amberljgarcia@gmail.com" class="contact-link">
+              <span class="contact-link-icon">✉</span>
+              amberljgarcia@gmail.com
+            </a>
+            <a href="https://www.linkedin.com/in/amberlgarcia/" target="_blank" class="contact-link">
+              <span class="contact-link-icon">in</span>
+              linkedin.com/in/amberlgarcia
+            </a>
+          </div>
+        </div>
+        <div class="gsom-callout">
+          <h4>Golden State of Mind</h4>
+          <p>I'm a certified Working Genius facilitator — helping teams understand how they're wired to work, where they thrive, and how to collaborate more effectively. Available for team assessments and facilitation sessions.</p>
+          <a href="mailto:amberljgarcia@gmail.com?subject=Working Genius Inquiry" class="btn-primary">Book a Discovery Call</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Amber L Garcia · Orange County, CA</p>
+  </footer>
+
+  <script>
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in, .career-item').forEach(el => observer.observe(el));
+  </script>
+
 </body>
 </html>
