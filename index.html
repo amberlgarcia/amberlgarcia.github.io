@@ -127,8 +127,20 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
+    }
+    .hero-image svg.blob {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-52%, -50%);
+      z-index: 0;
     }
     .hero-image img {
+      position: relative;
+      z-index: 1;
       width: 100%;
       max-width: 280px;
       border-radius: 4px;
@@ -493,6 +505,10 @@
 
     </div>
     <div class="hero-image">
+      <svg class="blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#f5eae9" d="M44.3,-67.8C56.6,-60.3,65,-46.6,70.2,-31.8C75.4,-17,77.4,-1.1,73.6,13.1C69.8,27.3,60.2,39.8,48.6,50.3C37,60.8,23.4,69.3,7.6,73.2C-8.2,77.1,-26.2,76.4,-40,68.5C-53.8,60.6,-63.4,45.5,-68.7,29C-74,12.5,-75,-5.4,-69.1,-20.5C-63.2,-35.6,-50.4,-47.9,-36.6,-55.2C-22.8,-62.5,-8,-64.8,5.2,-71.9C18.4,-79,32,-75.3,44.3,-67.8Z" transform="translate(100 100)" />
+        <path fill="none" stroke="#c4847a" stroke-width="1.5" opacity="0.5" d="M41,-63.2C52.8,-55.2,61.6,-43.2,67.2,-29.6C72.8,-16,75.2,-0.8,71.4,13C67.6,26.8,57.6,39.2,45.4,49.4C33.2,59.6,18.8,67.6,2.6,71.4C-13.6,75.2,-31.8,74.8,-45.4,66.8C-59,58.8,-68,43.2,-72.6,26.4C-77.2,9.6,-77.4,-8.4,-71,-23.8C-64.6,-39.2,-51.6,-52,-37.2,-59.8C-22.8,-67.6,-7,-70.4,6.8,-76C20.6,-81.6,29.2,-71.2,41,-63.2Z" transform="translate(100 100)" />
+      </svg>
       <img src="headshot_2023_dec.jpg" alt="Amber L Garcia" />
     </div>
   </div>
@@ -656,7 +672,7 @@
 
       <div class="resume-cta">
         <p><strong>Want the full picture?</strong> Download my resume for complete scope details and key accomplishments.</p>
-        <a href="Amber_L_Garcia_Resume_2026_final.pdf" class="btn btn-primary">Download Resume</a>
+        <a href="Amber L Garcia Resume 2026 Final.pdf" class="btn btn-primary">Download Resume</a>
       </div>
     </div>
   </section>
